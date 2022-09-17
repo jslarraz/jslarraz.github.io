@@ -52,7 +52,7 @@
                 <div class="site-logo">
                     <a href="#" class="hoveroff" title="">
                         <!--<img src="" alt="">-->
-                        <span>J</span>slarraz
+                        <span>j</span>slarraz
                     </a>
                 </div>
                 <button class="button-toggler navbar-toggler collapsed" type="button" data-target="#navigation" data-toggle="collapse" aria-controls="navigation" aria-expanded="false">
@@ -95,11 +95,11 @@
     <main class="content center-main" >
         <!--INTRODUCTION SECTION START-->
         <section class="home d-flex" id="home">
-            <!--Particle Background
+            <!--Particle Background-->
             <div class="background-particle" id="particlebackground" data-config="./assets/pj-config.json">
 
             </div>
-            End of Particle Background-->
+            <!---End of Particle Background-->
             <div class="container introduction" >
                 <p class="welcome_text mb-4" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="150">Hi, my name is <span class="welcome-text-type" data-options="" ></span></p>
                 <div id="parallax-scene" class="mb-4" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300">
@@ -111,7 +111,7 @@
                     <p>I'm a security engineer based in Zaragoza (Spain), aiming to create a more secure connected world.</p>
                 </div>
                 <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="450">
-                    <a href="#about" class="btn  btn-primary btn-small">Learn More</a>
+                    <a href="#contact" class="btn  btn-primary btn-small">Get in touch</a>
                 </div>
             </div>
             <!---
@@ -689,7 +689,7 @@
         </section>
         BLOG SECTION START-->
 
-        <!--CONTACT SECTION START
+        <!--CONTACT SECTION START-->
         <section class="contact" id="contact">
             <div class="container d-flex flex-column justify-content-between h-100 ">
                 <div class="section-title flex-grow-1">
@@ -712,7 +712,7 @@
                                 </div>
                                 <div class="contact-details mt-2">
                                     <h5>Email Me</h5>
-                                    <p><a href="mailto:kevinmiller@alb.com">jslarraz@gmail.com</a></p>
+                                    <p><a href="mailto:hi@jslarraz.es">hi@jslarraz.es</a></p>
                                 </div>
                             </div>
                         </div>
@@ -743,7 +743,10 @@
 
                     <div class="row mt-5">
                         <div class="col-lg-12">
+                            <!--
                             <form action="php/form.php" method="post" id="contact-form">
+                            -->
+                            <form id="contact-form">
                                 <div class="row">
                                     <div class="col-lg-6 mt-3">
                                         <div class="form-group">
@@ -786,7 +789,7 @@
 
             </div>
         </section>
-        CONTACT SECTION END-->
+        <!---CONTACT SECTION END-->
 
         <footer class="horizontal-footer shadow-footer">
             <div class="container">
@@ -841,6 +844,7 @@
 
 
     <!--JS FILES-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="./assets/js/jquery.js"></script>
     <script src="./assets/js/popper.min.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
@@ -856,5 +860,8 @@
     <script src="./assets/js/alert.js"></script>
     <script src="./assets/js/contact.js"></script>
     <script src="./assets/js/custom.js"></script>
+
+    <!---Files to use the emailjs service-->
+
 </body>
 </html>
