@@ -172,7 +172,7 @@ window.onload = function() {
                     // link
                     const newsTitleLink = document.createElement('a');
                     newsTitleLink.classList.add('blog-permalink');
-                    newsTitleLink.href = "./blog_page.html?id=" + post._id;
+                    newsTitleLink.href = "./blog_page.html?_id=" + post._id;
                     newsTitleLink.innerHTML = "<h3>" + post.title + "</h3>";
 
                 // add newsTitleLink to newsTitleDiv
