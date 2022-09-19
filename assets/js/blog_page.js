@@ -49,7 +49,7 @@ window.onload = function() {
         let y = n.getFullYear();
         let m = n.getMonth();
         let d = n.getDate();
-        document.getElementById('post-date').innerHTML = d + " " + monthNames[m] + " " + y;
+        document.getElementById('post-date').innerHTML = d + " " + monthNames[m] + ", " + y;
     }
 
 

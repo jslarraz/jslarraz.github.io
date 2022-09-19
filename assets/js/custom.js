@@ -261,8 +261,29 @@ $(window).on("load", function(){
         dragEndSpeed: 500
     });
 
-    
 
+
+    // Update blog elements
+    // Get index from server
+    $.getJSON('./assets/blog_entries/index.json', function(data) {
+
+        if (data.entries.length > 2) {
+            for (let i = 0; i < 3; i++) {
+                document.getElementById('blog-image-' + (i+1)).src = data.entries[i].image;
+                document.getElementById('blog-title-' + (i+1)).href = './blog_page.html?_id=' + data.entries[i]._id;
+                document.getElementById('blog-title-' + (i+1)).innerHTML = "<h3>" + data.entries[i].title + "</h3>";
+                document.getElementById('blog-date-' + (i+1)).innerHTML = data.entries[i].date;
+                document.getElementById('blog-author-' + (i+1)).innerHTML = data.entries[i].author;
+                document.getElementById('blog-button-' + (i+1)).href = './blog_page.html?_id=' + data.entries[i]._id;
+            }
+
+        } else {
+            var main = document.getElementById('main');
+            var blog = document.getElementById('blog');
+            main.removeChild(blog);
+        }
+
+    });
     
 
 });
