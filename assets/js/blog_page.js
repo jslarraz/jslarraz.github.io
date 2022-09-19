@@ -40,6 +40,16 @@ window.onload = function() {
 
         });
 
+    } else {
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        let n =  new Date();
+        let y = n.getFullYear();
+        let m = n.getMonth();
+        let d = n.getDate();
+        document.getElementById('post-date').innerHTML = d + " " + monthNames[m] + " " + y;
     }
 
 
