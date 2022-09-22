@@ -278,11 +278,20 @@ $(window).on("load", function(){
             }
 
         } else {
-            var main = document.getElementById('main');
-            var blog = document.getElementById('blog');
+            let main = document.getElementById('main');
+            let blog = document.getElementById('blog');
             main.removeChild(blog);
         }
 
+    }).fail(function(jqXHR) {
+        let main = document.getElementById('main');
+        let blog = document.getElementById('blog');
+        main.removeChild(blog);
+        /*if (jqXHR.status == 404) {
+            alert("404 Not Found");
+        } else {
+            alert("Other non-handled error type");
+        }*/
     });
     
 
