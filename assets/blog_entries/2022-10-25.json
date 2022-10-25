@@ -1,0 +1,96 @@
+{
+  "title": "Raspberry cluster up and running.",
+  "image": "assets/blog_images/25-10-2022.jpg",
+  "date": "25 October 2022",
+  "author": "Jorge Sancho Larraz",
+  "content": [
+    "<p>This blog entry is a short and easy tutorial to get a kubernetes cluster up and running in just few minutes starting from a set of Raspberry Pis. First of all, I want to credit Anthony N. Simon as I used his <a href='https://anthonynsimon.com/blog/kubernetes-cluster-raspberry-pi/'>work</a> as starting point to build my own improvements.</p>",
+
+    "<p>For this tutorial I will use 4 x Raspberry Pi 4 (4Gb) as you can see in the heading image, and <a href='https://k3s.io'>k3s</a> as kubernetes distribution, which is the most straight forward way to get started if you don't need tweaked configurations. We will start from the <i>Ubuntu server 22.10 (64-bit)</i> image. You can use the Raspberry Pi Imager to flash it to the SD card, but please, continue reading before booting it. Note that it is important to use an Ubuntu server version as it comes with <a href='https://cloudinit.readthedocs.io/en/latest/'>cloud-init</a> preinstalled.</p>",
+
+    "<h4>Setting up the master node</h4>",
+
+    "<p>First, we need to <b>enable container features</b> on the OS kernel. You can do that just adding following content at the end of the <b>cmdline.txt</b> file that resides at the root of your already flashed SD card:</p> <blockquote>cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1 swapaccount=1</blockquote>",
+
+    "<p>Now, we are going to use cloud-init to <b>configure the image</b>. Cloud-init is the industry standard method for cloud instance initialization. During the boot, cloud-init identifies the cloud it is running on and initializes the system accordingly. Cloud instances (or the Raspberry Pi in our case) will automatically be provisioned during first boot with networking, storage, ssh keys, packages and various other system aspects already configured. You can provide you configuration to cloud-init using the user-data file (which has already been created at the root of your SD card). So please, <b>replace the content of the <i>user-data</i> file</b> at the root of your SD card with the following content and replace the variables denoted by <> with your required values.</p>",
+
+    "<blockquote><samp>",
+    "#cloud-config<br>",
+    "hostname: <code>&lt;YOUR_HOSTNAME&gt;</code><br>",
+    "manage_etc_hosts: true<br>",
+    "packages:<br>",
+    "- avahi-daemon<br>",
+    "- docker.io<br>",
+    "apt:<br>",
+    "&nbsp&nbspconf: |<br>",
+    "&nbsp&nbsp&nbsp&nbspAcquire {<br>",
+    "&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCheck-Date \"false\";<br>",
+    "&nbsp&nbsp&nbsp&nbsp};<br><br>",
+    "users:<br>",
+    "- name: <code>&lt;YOUR_USERNAME&gt;</code><br>",
+    "&nbsp&nbspgroups: users,adm,dialout,netdev,plugdev,input,gpio,spi,i2c,render,sudo<br>",
+    "&nbsp&nbspshell: /bin/bash<br>",
+    "&nbsp&nbsplock_passwd: true<br>",
+    "&nbsp&nbspssh_authorized_keys:<br>",
+    "&nbsp&nbsp&nbsp&nbsp- <code>&lt;YOUR_SSH_PUBLIC_KEY&gt;</code><br>",
+    "&nbsp&nbspsudo: ALL=(ALL) NOPASSWD:ALL<br><br>",
+    "ssh_pwauth: false<br><br>",
+    "package_update: true<br>",
+    "package_upgrade: true<br><br>",
+    "runcmd:<br>",
+    "- curl -sfL https://get.k3s.io | sh -<br>",
+    "- reboot",
+    "</samp></blockquote>",
+
+    "<p>Previous cloud-init configuration will: ",
+    "<li class=mx-4>Disable the SSH login using passwords.</li>",
+    "<li class=mx-4>Set the node hostname.</li>",
+    "<li class=mx-4>Install the required packages: mainly docker.</li>",
+    "<li class=mx-4>Create a new sudoer user and enable SSH access (with private key).</li>",
+    "<li class=mx-4>Install k3s in master mode. </li></p>",
+
+    "<p>You can now boot your raspberry pi and wait until the cloud-init process ends with the configuration of your master node. Your can check whether the cloud-init process is still running with the following command:</p> <blockquote>ps -e | grep cloud-init</blockquote>",
+
+    "<p>Once the configuration has finished, you can obtain the token required to add worker nodes to your cluster with the following command:</p> <blockquote>sudo cat /var/lib/rancher/k3s/server/node-token</blockquote>",
+
+
+
+    "<h4>Setting up worker nodes</h4>",
+
+    "<p>For each worker node, you need also to <b>enable container features</b> on the OS kernel by adding following content at the end of the <b>cmdline.txt</b> file that resides at the root of your already flashed SD card:</p> <blockquote>cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1 swapaccount=1</blockquote></p>",
+
+    "<p>In the some way you also need to modify the <i>user-data</i> file to properly configure the instance. Note that in this case, as we are configuring the worker node, you also needs to provide the IP address of your master node and the token that you previously obtained form your master node.</p>",
+
+    "<blockquote><samp>",
+    "#cloud-config<br>",
+    "hostname: <code>&lt;YOUR_HOSTNAME&gt;</code><br>",
+    "manage_etc_hosts: true<br>",
+    "packages:<br>",
+    "- avahi-daemon<br>",
+    "- docker.io<br>",
+    "apt:<br>",
+    "&nbsp&nbspconf: |<br>",
+    "&nbsp&nbsp&nbsp&nbspAcquire {<br>",
+    "&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCheck-Date \"false\";<br>",
+    "&nbsp&nbsp&nbsp&nbsp};<br><br>",
+    "users:<br>",
+    "- name: <code>&lt;YOUR_USERNAME&gt;</code><br>",
+    "&nbsp&nbspgroups: users,adm,dialout,netdev,plugdev,input,gpio,spi,i2c,render,sudo<br>",
+    "&nbsp&nbspshell: /bin/bash<br>",
+    "&nbsp&nbsplock_passwd: true<br>",
+    "&nbsp&nbspssh_authorized_keys:<br>",
+    "&nbsp&nbsp&nbsp&nbsp- <code>&lt;YOUR_SSH_PUBLIC_KEY&gt;</code><br>",
+    "&nbsp&nbspsudo: ALL=(ALL) NOPASSWD:ALL<br><br>",
+    "ssh_pwauth: false<br><br>",
+    "package_update: true<br>",
+    "package_upgrade: true<br><br>",
+    "runcmd:<br>",
+    "- curl -sfL https://get.k3s.io | K3S_URL=https://<code>&lt;YOUR_SERVER_NODE_IP&gt;</code>:6443 K3S_TOKEN=<code>&lt;YOUR_CLUSTER_TOKEN&gt;</code> sh -<br>",
+    "- reboot",
+    "</samp></blockquote>",
+
+    "<h4>Install kubectl on your management host</h4>",
+    "<p>## Install kubectl on wsl\n\n```\n$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -\n$ sudo touch /etc/apt/sources.list.d/kubernetes.list\n$ echo \"deb http://apt.kubernetes.io/ kubernetes-xenial main\" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list\n$ sudo apt-get update\n$ sudo apt-get install -y kubectl\n```</p>"
+
+  ]
+}

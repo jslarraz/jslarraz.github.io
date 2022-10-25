@@ -35,7 +35,7 @@ window.onload = function() {
             postAuthor.innerHTML = data.author;
 
             var postContent = document.getElementById('post-content');
-            postContent.innerHTML = data.content;
+            postContent.innerHTML = data.content.join('');
 
 
         });

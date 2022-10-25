@@ -933,7 +933,7 @@ section.resume h3 {
     10. BLOG SECTION
 ========================*/
 .news-item .news-content .news-title {
-  min-height: 55px;
+  min-height: 35px;
 }
 
 .news-item .news-content .news-title .blog-permalink h3 {

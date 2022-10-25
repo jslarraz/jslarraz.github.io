@@ -1,0 +1,31 @@
+{
+  "entries": [
+    {
+      "_id": "2022-10-25",
+      "title": "Raspberry cluster up and running.",
+      "resume": "Bring you raspberry cluster up and running in just 5 minutes with kubernetes. It just works.",
+      "image": "assets/blog_images/25-10-2022.jpg",
+      "date": "25 October 2022",
+      "author": "Jorge Sancho Larraz",
+      "tags": ["Infrastructure"]
+    },
+    {
+      "_id": "2022-09-19",
+      "title": "One protocol to rule them all.",
+      "resume": "The very basic resume to include in our post entry. Again",
+      "image": "https://via.placeholder.com/600x337",
+      "date": "19 September 2022",
+      "author": "Jorge Sancho Larraz",
+      "tags": ["Network management", "Other stuff"]
+    },
+    {
+      "_id": "2022-09-19",
+      "title": "One protocol to rule them all.",
+      "resume": "The very basic resume to include in our post entry. Again",
+      "image": "https://via.placeholder.com/600x337",
+      "date": "19 September 2022",
+      "author": "Jorge Sancho Larraz",
+      "tags": ["Network management", "Other stuff"]
+    }
+  ]
+}

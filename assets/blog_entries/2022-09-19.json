@@ -1,0 +1,28 @@
+{
+  "title": "One protocol to rule them all.",
+  "image": "https://via.placeholder.com/600x337",
+  "date": "19 September 2022",
+  "author": "Jorge Sancho Larraz",
+  "content": [
+    "<p><i>One protocol to rule them all, one protocol to monitor them,<br>One protocol to control them all, and in the network bind them.</i></p>",
+
+    "<p>I'm sorry for the clickbait title but The Rings of Power has just been released and I'm completely hyped hehe. This post, as those more perceptive may realise, talks about <b>Network Management</b>. Concretely, it surveys the basis of network management, discusses about how the Simple Network Management Protocol has ruled most network devices for the last 30 years and what we can expect of it in the future. </p>",
+
+    "<p>Back to my days at the university, when I was professor of the Network Management module, I used to start the module stating that Network Management is the combination of Network Monitoring and Network Control. While the <b>Network Monitoring</b> is devoted to gather information about the status and behaviour of the networked configuration, the <b>Network Control</b> provides the capability of changing configurations and start actions on devices, usually in response to an event detected by the monitoring. The International Organization for Standards (OSI) define a list of key functional areas of Network Management which includes fault, accounting, configuration, performance and security management.</p>",
+
+    "<p>With the increasing size, complexity and heterogeneity of networked installations, the cost of Network Management also rises. To control these costs, standard tools are needed to manage different product types, ranging from old-fashioned hubs to blazing-fast cloud instances, coming from different vendors and providers. In this context, the <b>Simple Network Management Protocol (SNMP)</b> was adopted by the industry, becoming the de-facto standard for the management of TCP/IP networks, even if the only simple thing related to it is part of its name.</p>",
+
+    "<h3>Simple Network Management Protocol</h3>",
+
+    "<p>During the past few years, there has been a lot of discussion about whether SNMP is already dead or not. Well, depends on what you mean by dead. I can agree that it is not very likely that new revisions of the protocol are going to be released in the future and, at some point, new products will drop the support for SNMP. However, even if that is the case, I have at least <b>two good reasons to keep SNMP in any Network Management course</b> during the following years. First, there are a lot of already deployed network devices that only support SNMP as standard management option and are going to be in the field for the following 15 or 20 years. Second, SNMP framework defines everything that a good Network Management framework needs, and can be used as basis to understand newer management frameworks.</p>",
+
+    "SNMP defines defines two different roles for the network management architecture, agents and managers, a language to model the information that can be managed (SMI), a set of common information that should be available on all compliant agents (MIB-II) and a protocol to exchange this information between agents and managers (SNMP). We will go into detail about each of these items in future blog entries, but for now let's just take a look at the following example that monitors the amount of traffic through my kubernetes cluster.</p>",
+
+
+
+    "<!--- https://blog.jupyter.org/jupyter-everywhere-f8151c2cc6e8 -->",
+    "<iframe src='https://jupyterlite.github.io/demo/retro/notebooks/?path=python.ipynb' width='100%' height='500px'></iframe>"
+  ]
+
+
+}
