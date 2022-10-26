@@ -1,6 +1,6 @@
 {
   "title": "Raspberry cluster up and running.",
-  "image": "assets/blog_images/2022-10-25/kube-cluster.jpg",
+  "image": "assets/blog_entries/2022-10-25/kube-cluster.jpg",
   "date": "25 October 2022",
   "author": "Jorge Sancho Larraz",
   "content": [
@@ -22,6 +22,7 @@
     "packages:<br>",
     "- avahi-daemon<br>",
     "- docker.io<br>",
+    "- linux-modules-extra-raspi<br>",
     "apt:<br>",
     "&nbsp&nbspconf: |<br>",
     "&nbsp&nbsp&nbsp&nbspAcquire {<br>",
@@ -120,7 +121,7 @@
     "</blockquote>",
 
     "<p>Now you can use the command <b>kubectl get nodes</b> to see if all worker nodes have been added properly to the cluster.</p>",
-    "<div class='row justify-content-center text-center'><img src='assets/blog_images/2022-10-25/kubectl_get_nodes.PNG' width='600'></div>"
+    "<div class='row justify-content-center text-center'><img src='assets/blog_entries/2022-10-25/kubectl_get_nodes.PNG' width='600'></div>"
 
 
   ]

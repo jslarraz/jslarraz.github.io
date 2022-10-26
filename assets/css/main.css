@@ -955,6 +955,15 @@ section.resume h3 {
   opacity: 0.7;
 }
 
+/* Added by me, add margin to on blog post subsection*/
+.blog h4 {
+  margin-top:3rem!important;
+}
+
+blockquote {
+  margin-bottom:2rem!important;
+}
+
 /*========================
     11. CONTACT SECTION
 ========================*/

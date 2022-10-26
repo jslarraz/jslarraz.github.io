@@ -18,7 +18,7 @@ window.onload = function() {
 
 
         // Get index from server
-        $.getJSON('./assets/blog_entries/' + _id + '.json', function (data) {
+        $.getJSON('./assets/blog_entries/' + _id + '/content.json', function (data) {
 
 
             // Get elements from DOM

@@ -1,10 +1,19 @@
 {
   "entries": [
     {
+      "_id": "2022-10-27",
+      "title": "Deploying Kubernetes dashboard..",
+      "resume": "Deploy kubernetes dashboard to quickly view the status of your cluster.",
+      "image": "assets/blog_entries/2022-10-27/kube-dashboard.PNG",
+      "date": "27 October 2022",
+      "author": "Jorge Sancho Larraz",
+      "tags": ["Infrastructure"]
+    },
+    {
       "_id": "2022-10-25",
       "title": "Raspberry cluster up and running.",
       "resume": "Bring you raspberry cluster up and running in just 5 minutes with kubernetes. It just works.",
-      "image": "assets/blog_images/2022-10-25/kube-cluster.jpg",
+      "image": "assets/blog_entries/2022-10-25/kube-cluster.jpg",
       "date": "25 October 2022",
       "author": "Jorge Sancho Larraz",
       "tags": ["Infrastructure"]
