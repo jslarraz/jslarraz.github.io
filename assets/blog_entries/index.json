@@ -4,7 +4,7 @@
       "_id": "2022-10-25",
       "title": "Raspberry cluster up and running.",
       "resume": "Bring you raspberry cluster up and running in just 5 minutes with kubernetes. It just works.",
-      "image": "assets/blog_images/25-10-2022.jpg",
+      "image": "assets/blog_images/2022-10-25/kube-cluster.jpg",
       "date": "25 October 2022",
       "author": "Jorge Sancho Larraz",
       "tags": ["Infrastructure"]
