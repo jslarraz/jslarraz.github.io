@@ -1,0 +1,9 @@
+{
+  "_id": "2022-10-27",
+  "title": "Deploying Kubernetes dashboard.",
+  "resume": "Deploy kubernetes dashboard to quickly view the status of your cluster.",
+  "image": "assets/blog_entries/2022-10-27/kube-dashboard.PNG",
+  "date": "27 October 2022",
+  "author": "Jorge Sancho Larraz",
+  "tags": ["Infrastructure"]
+}

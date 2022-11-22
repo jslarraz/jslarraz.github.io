@@ -18,7 +18,7 @@ window.onload = function() {
 
 
         // Get index from server
-        $.getJSON('./assets/blog_entries/' + _id + '/content.json', function (data) {
+        $.getJSON('./assets/blog_entries/' + _id + '/metadata.json', function (data) {
 
 
             // Get elements from DOM
@@ -33,9 +33,12 @@ window.onload = function() {
 
             var postAuthor = document.getElementById('post-author');
             postAuthor.innerHTML = data.author;
+        });
+
+        $.get('./assets/blog_entries/' + _id + '/content.html', function (data) {
 
             var postContent = document.getElementById('post-content');
-            postContent.innerHTML = data.content.join('');
+            postContent.innerHTML = data;
 
 
         });

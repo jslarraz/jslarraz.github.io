@@ -1,0 +1,73 @@
+
+<p><a href="https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md">Kubernetes-dashboard</a> is the easiest way to get a complete dashboard to monitor the status of your cluster.
+
+
+
+<h4>Set up kubernetes dashboard</h4>
+
+Kubernetes dashboard can be easily deployed to the cluster itself simply by running the following command on your management computer: </p>
+<blockquote>$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml</blockquote>
+
+<p>Then, you need to copy following code to a file called <b>dashboard-adminuser.yaml</b>. It is intended to create a ServiceAccount for the dashboard.</p>
+
+<blockquote>
+apiVersion: v1<br>
+kind: ServiceAccount<br>
+metadata:<br>
+&nbsp&nbspname: admin-user<br>
+&nbsp&nbspnamespace: kubernetes-dashboard<br>
+</blockquote>
+
+<p>In the same way, you need to copy following code to a file called <b>dashboard-rolebinding.yaml</b>. It is intended to bind the ServiceAccount to the role cluster-admin.</p>
+
+<blockquote>
+apiVersion: rbac.authorization.k8s.io/v1<br>
+kind: ClusterRoleBinding<br>
+metadata:<br>
+&nbsp&nbspname: admin-user<br>
+roleRef:<br>
+&nbsp&nbspapiGroup: rbac.authorization.k8s.io<br>
+&nbsp&nbspkind: ClusterRole<br>
+&nbsp&nbspname: cluster-admin<br>
+subjects:<br>
+- kind: ServiceAccount<br>
+&nbsp&nbspname: admin-user<br>
+&nbsp&nbspnamespace: kubernetes-dashboard<br>
+</blockquote>
+
+<p>Now you need to apply this configuration in your cluster and get an access token for your ServiceAccount.</p>
+<blockquote>
+$ kubectl apply -f dashboard-adminuser.yaml<br>
+$ kubectl apply -f dashboard-rolebinding.yaml<br>
+$ kubectl -n kubernetes-dashboard create token admin-user<br>
+</blockquote>
+
+
+<h4>Connect to dashboard from local computer</h4>
+
+<p>Finally, you only need to start a kubernetes proxy to access the dashboard locally </p>
+<blockquote>
+$ kubectl proxy<br>
+</blockquote>
+
+and open dashboard url on your browser and log in using the token you obtained previously
+<blockquote>
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=_all\n<br>
+</blockquote>
+
+<div class="row mt-1 justify-content-center align-items-center">
+<div class="col-md-8 m-auto">
+<img class="img-fluid mx-auto" src="assets/blog_entries/2022-10-27/signin.png" width="600">
+</div>
+</div>
+
+
+<h4>Clean up installation</h4>
+
+<p>If for any reason you decide to stop using the kubernetes-dashboard, you can clean up your installation using following commands: </p>
+
+<blockquote>
+kubectl -n kubernetes-dashboard delete serviceaccount admin-user<br>
+kubectl -n kubernetes-dashboard delete clusterrolebinding admin-user<br>
+kubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml<br>
+</blockquote>
