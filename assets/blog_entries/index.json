@@ -1,6 +1,15 @@
 {
   "entries": [
     {
+      "_id": "2022-11-22",
+      "title": "Fan control for your raspberry pi.",
+      "resume": "How to share room with a raspberry pi cluster and keep sleeping, a.k.a Configure manual/automatic fan control for your raspberry pi.",
+      "image": "assets/blog_entries/2022-11-22/Heatsink with Fan for Raspberry Pi.png",
+      "date": "22 November 2022",
+      "author": "Jorge Sancho Larraz",
+      "tags": ["Infrastructure"]
+    },
+    {
       "_id": "2022-10-27",
       "title": "Deploying Kubernetes dashboard.",
       "resume": "Deploy kubernetes dashboard to quickly view the status of your cluster.",

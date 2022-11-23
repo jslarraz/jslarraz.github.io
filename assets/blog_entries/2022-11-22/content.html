@@ -1,0 +1,74 @@
+<p>If you have ever had to share room with your raspberry pi cluster, you would certainly understand how annoying can raspberry pi fans be when you try to sleep. In this short tutorial, I would explain how you can easily control the fans, well manually (via scripts) or even configure them to automatically start/stop depending on the raspberry load/temperature.</p>
+
+
+<h4>Hardware configuration</h4>
+
+<p>Raspberry pi fans usually require 5V power supply that is obtained from <a href="https://cdn.sparkfun.com/assets/learn_tutorials/1/5/9/5/GPIO.png">pins 4 and 6 of the raspberry pi header</a>. However, after a quick research, I realised that these pins are directly routed to the board power supply rails and are not controllable from the raspberry pi microprocessor.</p>
+
+<p>After dropping this initial approach, I started to look for a different 5V power source and the USB got my attention. It was then when I remembered that at some point in the past I bought some <a href="https://www.amazon.es/Conector-Macho-Cable-Carcasa-Plástico/dp/B07LH1VWQW/ref=sr_1_14">usb connectors</a> that I didn't use yet, so I started rummaging through the drawers. Once I found them, I soldered the required wires to the 5V and GND positions leaving data paths unused. </p>
+
+<p>SUCCESS! The usb port can provide enough current to power on the fans. Note that if you don't want to solder anything you can also use some <a href="https://www.amazon.es/GALDOEP-terminalestipo-enchufable-Adaptador-transferen/dp/B09NQBJJND/ref=sr_1_1_sspa">connectors of this kind</a>, but you will notice that they are much more expensive. So now, everything we need is some way to control the USB power supply on demand from the raspberry pi software.</p>
+
+
+
+<h4>Software configuration</h4>
+
+<p>The USB power control is based on <a href="https://github.com/mvp/uhubctl">uhubctl</a>. To use uhubctl from raspberry pi, you just need to install the required packages: </p>
+<blockquote>
+    $ sudo apt-get install linux-modules-extra-raspi<br>
+    $ sudo apt-get install uhubctl<br>
+</blockquote>
+
+<p>And provided the required configuration to the system. For Raspberry Pi 4, you need to introduce the following udev configuration to the <b>/etc/udev/rules.d/52-usb.rules</b> file</p>
+<blockquote>
+    SUBSYSTEM=="usb", ATTR{idVendor}=="2109", MODE="0666"<br>
+    SUBSYSTEM=="usb", ATTR{idVendor}=="1d6b", MODE="0666"<br>
+</blockquote>
+
+<p>and run the following commands to make this change effective and add your user to the dialout group:</p>
+<blockquote>
+    $ sudo udevadm trigger --attr-match=subsystem=usb<br>
+    $ sudo usermod -a -G dialout $USER<br>
+</blockquote>
+
+
+
+<h4>Controlling the fans</h4>
+
+<p>At this point we have everything ready to control our raspberry pi fans. First, we can verify that everything has worked properly using following commands to turn fans off and on respectively:</p>
+<blockquote>
+    $ /usr/sbin/uhubctl -l 2 -a off<br>
+    $ /usr/sbin/uhubctl -l 2 -a on<br>
+</blockquote>
+
+
+<p>We can also create a simple script to automatically turn fans on when the CPU temperature increases over a given threshold (70 degrees in our example) and turn them off when the temperature decreases again (below 50 degrees). You can create the script, <b>fan_control.sh</b>, on your favourite location</p>
+<blockquote>
+    #!/bin/bash <br>
+    TEMP=$(cat /sys/class/thermal/thermal_zone0/temp )<br>
+    TEMP=$((TEMP / 1000))<br>
+    if [ $TEMP -gt 70 ] <br>
+    then <br>
+    /usr/sbin/uhubctl -l 2 -a on <br>
+    fi <br>
+
+    if [ $TEMP -lt 50 ] <br>
+    then <br>
+    /usr/sbin/uhubctl -l 2 -a off <br>
+    fi <br>
+</blockquote>
+
+<p>and grant execution permissions for the owner of the file</p>
+<blockquote>
+    $ chmod 744 /path/to/your/fan_control.sh<br>
+</blockquote>
+
+<p>To get the script automatically executed, we need to create a new cron task. We can open the crontab editor using the following command:</p>
+<blockquote>
+    $ crontab -e<br>
+</blockquote>
+
+<p>and we will be prompted to select which text editor do we want to use. You can select your preferred option to append the following line to the crontab:</p>
+<blockquote>
+    $ */5 * * * * /path/to/your/fan_control.sh<br>
+</blockquote>
