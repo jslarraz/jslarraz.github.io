@@ -290,6 +290,21 @@ section.about .about-info i {
   background-color: #1cba5a;
 }
 
+/* custom code, links pdf overlay (without href) */
+.resume-list h4 a:hover{
+  cursor: pointer;
+  color: #fff;
+}
+.resume-list p a{
+  cursor: pointer;
+  color: #fff;
+}
+.resume-list p a:hover{
+  cursor: pointer;
+  color: #1cba5a;
+}
+
+
 /*=======================
     8. BLOG SECTION
 ========================*/
