@@ -44,6 +44,22 @@
         </div>
     </div>
     <!--PRELOADER END-->
+
+    <!--OVERLAY START-->
+    <div id="overlay" style="position: fixed; display: none; width: 100%; height: 100%; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.5); z-index: 2; cursor: pointer;" align="center" onclick="close_overlay()">
+        <iframe src="" width="40%" height="100%" frameborder="0" scrolling="no"></iframe>
+    </div>
+    <script>
+        function open_overlay(src) {
+            document.getElementById("overlay").getElementsByTagName("iframe")[0].src = src;
+            document.getElementById("overlay").style.display = "block";
+        }
+        function close_overlay() {
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+    <!--OVERLAY END-->
+
     <!--HEADER START-->
     <header class="navigation horizontal_header transparentOnScroll navbar navbar-expand-lg fixed-top">
         <div class="header-ins">
@@ -337,7 +353,7 @@
                             <h3 class="mb-4">Education</h3>
                             <ul class="list-inline resume-list">
                                 <li>
-                                    <h4 class="mb-2">Bachelor's Degree in Telecomunications Technology and Services Engineering</h4>
+                                    <h4 class="mb-2" onclick="open_overlay('https://onedrive.live.com/embed?cid=D78281988CDFEBB6&resid=d78281988cdfebb6%21185628&authkey=AFq3gk6ZMqaPKJo&em=2')">Bachelor's Degree in Telecomunications Technology and Services Engineering</h4>
                                     <span class="time">2010 - 2014</span>
                                     <p class="my-2">By the University of Zaragoza, obtaining the Extraordinary End of Bachelor Award for the best academic results.</p>
                                 </li>
