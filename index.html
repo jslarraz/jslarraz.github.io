@@ -47,15 +47,31 @@
 
     <!--OVERLAY START-->
     <div id="overlay" style="position: fixed; display: none; width: 100%; height: 100%; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.5); z-index: 2; cursor: pointer;" align="center" onclick="close_overlay()">
-        <iframe src="" width="40%" height="100%" frameborder="0" scrolling="no"></iframe>
+        <!-- <iframe src="" width="40%" height="100%" frameborder="0" scrolling="no"></iframe> -->
+        <!-- <img onmouseleave="close_overlay()" class="mt-5" src="" width="40%"> -->
     </div>
     <script>
-        function open_overlay(src) {
-            document.getElementById("overlay").getElementsByTagName("iframe")[0].src = src;
+        let menuEnterTimer;
+        function overlay_img(src) {
+            document.getElementById("overlay").innerHTML =
+                '<img onmouseleave="close_overlay()" class="mt-5" src="' + src + '" width="40%">';
             document.getElementById("overlay").style.display = "block";
+        }
+        function overlay_pdf(src) {
+            document.getElementById("overlay").innerHTML = '<iframe src="' + src + '" width="40%" height="100%" frameBorder="0" scrolling="no"></iframe>';
+            document.getElementById("overlay").style.display = "block";
+        }
+        function delayed_overlay_img(src) {
+            menuEnterTimer = setTimeout(overlay_img, 1000, src);
+        }
+        function delayed_overlay_pdf(src) {
+            menuEnterTimer = setTimeout(overlay_pdf, 1000, src);
         }
         function close_overlay() {
             document.getElementById("overlay").style.display = "none";
+        }
+        function clear_timer() {
+            if (menuEnterTimer) clearTimeout(menuEnterTimer);
         }
     </script>
     <!--OVERLAY END-->
@@ -353,9 +369,9 @@
                             <h3 class="mb-4">Education</h3>
                             <ul class="list-inline resume-list">
                                 <li>
-                                    <h4 class="mb-2"><a onclick="open_overlay('https://onedrive.live.com/embed?cid=D78281988CDFEBB6&resid=d78281988cdfebb6%21185628&authkey=AFq3gk6ZMqaPKJo&em=2')">Bachelor's Degree in Telecomunications Technology and Services Engineering</a></h4>
+                                    <h4 class="mb-2"><a onclick="overlay_img('assets/images/personal/titulo_grado.png')" onmouseenter="delayed_overlay_img('assets/images/personal/titulo_grado.png')" onmouseleave="clear_timer()">Bachelor's Degree in Telecomunications Technology and Services Engineering</a></h4>
                                     <span class="time">2010 - 2014</span>
-                                    <p class="my-2">By the University of Zaragoza, obtaining the <a onclick="open_overlay('https://onedrive.live.com/embed?cid=D78281988CDFEBB6&resid=d78281988cdfebb6%21185628&authkey=AFq3gk6ZMqaPKJo&em=2')">Extraordinary End of Bachelor Award</a> for the best academic results.</p>
+                                    <p class="my-2">By the University of Zaragoza, obtaining the <a onclick="overlay_img('assets/images/personal/premio_grado.png')" onmouseenter="delayed_overlay_img('assets/images/personal/premio_grado.png')" onmouseleave="clear_timer()">Extraordinary End of Bachelor Award</a> for the best academic results.</p>
                                 </li>
                                 <li>
                                     <h4 class="mb-2">Master's Degree in Telecommunications Engineering</h4>
@@ -365,7 +381,7 @@
                                 <li>
                                     <h4 class="mb-2">Doctorate in Cybersecurity</h4>
                                     <span class="time">2016 - 2021</span>
-                                    <p class="my-2">By the Universities of Basque Country, A Coruña, Cantabria, Oviedo and Zaragoza , obtaining the Cum Laude mention. It was founded via a FPU grant (Spanish Government). <u>See details</u></p>
+                                    <p class="my-2">By the Universities of Basque Country, A Coruña, Cantabria, Oviedo and Zaragoza , obtaining the Cum Laude mention. It was founded via a FPU grant (Spanish Government). <u>See more</u></p>
                                 </li>
                             </ul>
                         </div>
