@@ -291,6 +291,10 @@ section.about .about-info i {
 }
 
 /* custom code, links pdf overlay (without href) */
+.resume-list h4 a{
+  cursor: pointer;
+  color: #1cba5a;
+}
 .resume-list h4 a:hover{
   cursor: pointer;
   color: #fff;

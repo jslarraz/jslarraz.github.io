@@ -296,3 +296,17 @@ $(window).on("load", function(){
     
 
 });
+
+
+function resume_expand_collapse () {
+    let additional_info = document.getElementById('additional_info');
+    let resume_see_more = document.getElementById('resume_see_more');
+
+    if (resume_see_more.innerHTML == 'See more') {
+        resume_see_more.innerHTML = 'See less';
+        additional_info.style.display = '';
+    } else {
+        resume_see_more.innerHTML = 'See more';
+        additional_info.style.display = 'none';
+    }
+}

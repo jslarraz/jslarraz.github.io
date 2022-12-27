@@ -58,7 +58,7 @@
             document.getElementById("overlay").style.display = "block";
         }
         function overlay_pdf(src) {
-            document.getElementById("overlay").innerHTML = '<iframe src="' + src + '" width="40%" height="100%" frameBorder="0" scrolling="no"></iframe>';
+            document.getElementById("overlay").innerHTML = '<iframe onmouseleave="close_overlay()" src="' + src + '" width="40%" height="100%" frameBorder="0" scrolling="no"></iframe>';
             document.getElementById("overlay").style.display = "block";
         }
         function delayed_overlay_img(src) {
@@ -369,19 +369,20 @@
                             <h3 class="mb-4">Education</h3>
                             <ul class="list-inline resume-list">
                                 <li>
+                                    <h4 class="mb-2"><a onclick="overlay_img('assets/images/personal/titulo_doctorado.png')" onmouseenter="delayed_overlay_img('assets/images/personal/titulo_doctorado.png')" onmouseleave="clear_timer()">Doctoral Programme in Mobile
+                                        Network Information and Communication Technologies.</a></h4>
+                                    <span class="time">2016 - 2021</span>
+                                    <p class="my-2">By the Universities of Basque Country, A Coruña, Cantabria, Oviedo and Zaragoza , obtaining the Cum Laude mention. It was founded via a FPU grant (Spanish Government).</p>
+                                </li>
+                                <li>
+                                    <h4 class="mb-2"><a onclick="overlay_img('assets/images/personal/titulo_master.png')" onmouseenter="delayed_overlay_img('assets/images/personal/titulo_master.png')" onmouseleave="clear_timer()">Master's Degree in Telecommunications Engineering</a></h4>
+                                    <span class="time">2014 - 2016</span>
+                                    <p class="my-2">By the University of Zaragoza, obtaining the <a onclick="overlay_img('assets/images/personal/premio_master.png')" onmouseenter="delayed_overlay_img('assets/images/personal/premio_master.png')" onmouseleave="clear_timer()">Extraordinary End of Master Award</a> for the best academic results.</p>
+                                </li>
+                                <li>
                                     <h4 class="mb-2"><a onclick="overlay_img('assets/images/personal/titulo_grado.png')" onmouseenter="delayed_overlay_img('assets/images/personal/titulo_grado.png')" onmouseleave="clear_timer()">Bachelor's Degree in Telecomunications Technology and Services Engineering</a></h4>
                                     <span class="time">2010 - 2014</span>
                                     <p class="my-2">By the University of Zaragoza, obtaining the <a onclick="overlay_img('assets/images/personal/premio_grado.png')" onmouseenter="delayed_overlay_img('assets/images/personal/premio_grado.png')" onmouseleave="clear_timer()">Extraordinary End of Bachelor Award</a> for the best academic results.</p>
-                                </li>
-                                <li>
-                                    <h4 class="mb-2">Master's Degree in Telecommunications Engineering</h4>
-                                    <span class="time">2014 - 2016</span>
-                                    <p class="my-2">By the University of Zaragoza, obtaining the Extraordinary End of Master Award for the best academic results.</p>
-                                </li>
-                                <li>
-                                    <h4 class="mb-2">Doctorate in Cybersecurity</h4>
-                                    <span class="time">2016 - 2021</span>
-                                    <p class="my-2">By the Universities of Basque Country, A Coruña, Cantabria, Oviedo and Zaragoza , obtaining the Cum Laude mention. It was founded via a FPU grant (Spanish Government). <u>See more</u></p>
                                 </li>
                             </ul>
                         </div>
@@ -390,9 +391,9 @@
                             <h3 class="mb-4">Experience</h3>
                             <ul class="list-inline resume-list">
                                 <li>
-                                    <h4 class="mb-2">Cyber-security researcher @ University of Zaragoza</h4>
-                                    <span class="time">2016 - 2021</span>
-                                    <p class="my-2">Research in the design of secure architectures, focusing on Identity and Access management, API security and Secure Computation.</p>
+                                    <h4 class="mb-2">Product Security engineer @ BSH</h4>
+                                    <span class="time">2021 - Today</span>
+                                    <p class="my-2">Product Security Engineer at the BSH Hausgeräte GmbH, enhancing the overall security of the connected consumer IoT devices.</p>
                                 </li>
                                 <li>
                                     <h4 class="mb-2">Cyber-security professor @ ACING</h4>
@@ -400,11 +401,140 @@
                                     <p class="my-2">Responsible for providing the "Secure Architectures Design" module in the Advanced Cyberdefense Course at the Army Academy of Engineers (ACING).</p>
                                 </li>
                                 <li>
-                                    <h4 class="mb-2">Product Security engineer @ BSH</h4>
-                                    <span class="time">2021 - Today</span>
-                                    <p class="my-2">Product Security Engineer at the BSH Hausgeräte GmbH, enhancing the overall security of the connected consumer IoT devices.</p>
+                                    <h4 class="mb-2">Cyber-security researcher @ University of Zaragoza</h4>
+                                    <span class="time">2016 - 2021</span>
+                                    <p class="my-2">Research in the design of secure architectures, focusing on Identity and Access management, API security and Secure Computation.</p>
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+
+                    <div id="additional_info" class="row mt-4" style="display: none">
+                        <div class="col-lg-12">
+                            <h3 class="mb-4">Thesis</h3>
+                            <ul class="list-inline resume-list">
+                                <li>
+                                    <h4 class="mb-2"><a href="https://zaguan.unizar.es/record/106305?ln=en">Desing and evaluation of novel authentication, authorization and border protection mechanisms for modern information security architectures.</a></h4>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <h3 class="mb-4">Journal articles</h3>
+                            <ul class="list-inline resume-list">
+                                <li>
+                                    <h4 class="mb-2"><a href="https://www.mdpi.com/1424-8220/21/17/5716">Authorizing Third-Party Applications Served through Messaging Platforms</a></h4>
+                                    <p class="my-2">Jorge Sancho, José García and Álvaro Alesanco. Sensors 21.17, 2021</p>
+                                </li>
+                                <li>
+                                    <h4 class="mb-2"><a href="https://www.hindawi.com/journals/scn/2020/8856379/">Oblivious Inspection: on the confrontation between system security and data privacy at domain boundaries.</a></h4>
+                                    <p class="my-2">Jorge Sancho, José García and Álvaro Alesanco. Security and Communication Networks, 2020</p>
+                                </li>
+                                <li>
+                                    <h4 class="mb-2"><a href="https://www.mdpi.com/1424-8220/18/5/1525">Biometric authentication using the PPG: a long-term feasibility study.</a></h4>
+                                    <p class="my-2">Jorge Sancho, Álvaro Alesanco and José García. Sensors 18.5, 2018</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <h3 class="mb-4">Conference presentations</h3>
+                            <ul class="list-inline resume-list">
+                                <li>
+                                    <h4 class="mb-2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-64610-3_47">Distributed access control for cross-organizational healthcare data sharing scenarios. </a></h4>
+                                    <p class="my-2">Jorge Sancho, José García and Álvaro Alesanco. In European Medical and Biological Engineering Conference 2020 (pp. 407-413). Springer, Cham</p>
+                                </li>
+                                <li>
+                                    <h4 class="mb-2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-64610-3_107">Patient identification workflow for seamless EHR access during patient follow-up. </a></h4>
+                                    <p class="my-2">Jorge Sancho, José García and Álvaro Alesanco. In European Medical and Biological Engineering Conference 2020 (pp. 962-967). Springer, Cham</p>
+                                </li>
+                                <li>
+                                    <h4 class="mb-2"><a href="https://link.springer.com/chapter/10.1007/978-3-030-31635-8_102">On the privacy enhancement of in-transit health data inspection: a preliminary study.</a></h4>
+                                    <p class="my-2">Jorge Sancho, Gert Mikkelsen, Jonas Lindstrøm, José García and Álvaro Alesanco. In Mediterranean Conference on Medical and Biological Engineering and Computing 2019 (pp. 855-860). Springer, Cham.</p>
+                                </li>
+                                <li>
+                                    <h4 class="mb-2"><a href="https://link.springer.com/chapter/10.1007/978-981-10-5122-7_271">Photoplethysmographic authentication in long-term scenarios: a preliminary assessment.</a></h4>
+                                    <p class="my-2">Jorge Sancho, Álvaro Alesanco and José García. In EMBEC & NBC 2017 (pp. 1085-1088). Springer, Singapore.</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <h3 class="mb-4">Contracts</h3>
+                            <ul class="list-inline resume-list">
+                                <li>
+                                    <h4 class="mb-2"><a href="#">Characterization, application and definition of cybersecurity policies over a critical communications system.</a></h4>
+                                    <p class="my-2">In colaboration with Teltronic S.A.</p>
+                                </li>
+                                <li>
+                                    <h4 class="mb-2"><a href="#">Implementation of a license management system and protection of comercial information in distributed environments.</a></h4>
+                                    <p class="my-2">In colaboration with Urbisan Proyectos e Innovación S.L.</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <h3 class="mb-4">Supervision of final year projects</h3>
+                            <ul class="list-inline resume-list">
+                                <li>
+                                    <h4 class="mb-2"><a href="https://zaguan.unizar.es/record/76297?ln=en">Design and implementation of a graphic interface to the management of a PHR based on FHIR data using ELK</a></h4>
+                                    <p class="my-2">Master's theses. Manuel Hernández Rodrigo.</p>
+                                </li>
+                                <li>
+                                    <h4 class="mb-2"><a href="https://zaguan.unizar.es/record/64032?ln=en">Design and implementation of a bot for the messaging platform Telegram that allows the remote management of a security camera</a></h4>
+                                    <p class="my-2">Undergraduate dissertation. Arturo Manuel Dito Iranzo.</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <h3 class="mb-4">Teaching</h3>
+                            <ul class="list-inline resume-list">
+                                <li>
+                                    <h4 class="mb-2"><a href="https://estudios.unizar.es/estudio/asignatura?anyo_academico=2019&asignatura_id=30353&estudio_id=20190145&centro_id=110&plan_id_nk=438">Network and service security. </a></h4>
+                                    <p class="my-2">Bachelor's Degree in Telecommunications Technology and Services Engineering. From the 2017-18 course to the 2019-20 course.</p>
+                                </li>
+                                <li>
+                                    <h4 class="mb-2"><a href="https://estudios.unizar.es/estudio/asignatura?anyo_academico=2019&asignatura_id=30351&estudio_id=20190145&centro_id=110&plan_id_nk=438">Network management.</a></h4>
+                                    <p class="my-2">Bachelor's Degree in Telecommunications Technology and Services Engineering. From the 2017-18 course to the 2019-20 course.</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <h3 class="mb-4">Research stays</h3>
+                            <ul class="list-inline resume-list">
+                                <li>
+                                    <h4 class="mb-2"><a href="https://alexandra.dk/cybersikkerhed/">Alexandra Instituttets Security Lab.</a></h4>
+                                    <p class="my-2">Aarhus. Denmark. 21/08/18 - 20/11/18.</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!--
+                        <div class="col-lg-12">
+                            <h3 class="mb-4">Other</h3>
+                            <ul class="list-inline resume-list">
+                                <li>
+                                    <h4 class="mb-2"><a href="#">Blue team junior analyst</a></h4>
+                                    <p class="my-2">By Security Blue team. 2022.</p>
+                                </li>
+                                <li>
+                                    <h4 class="mb-2"><a href="#">Incident response + windows smartphone forensics.</a></h4>
+                                    <p class="my-2">By Antonio Sanz Alcober. 2018.</p>
+                                </li>
+                                <li>
+                                    <h4 class="mb-2"><a href="#">Computer forensics.</a></h4>
+                                    <p class="my-2">By Servidet Soluciones Avanzadas. 2014.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        -->
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-lg-12">
+                            <p class="text-center"><a onclick="resume_expand_collapse()" style="cursor: pointer"><u id="resume_see_more">See more</u></a></p>
                         </div>
                     </div>
 
