@@ -1,10 +1,19 @@
 {
   "entries": [
     {
+      "_id": "2022-12-20",
+      "title": "Is your IoT device ready for upcoming regulations?",
+      "resume": "Analysis of upcoming changes in the Radio Equipment Directive (RED) regarding cybersecurity + free ETSI 303 645 assessment template.",
+      "image": "assets/blog_entries/2022-12-20/title.png",
+      "date": "20 December 2022",
+      "author": "Jorge Sancho Larraz",
+      "tags": ["IoT security", "Regulations"]
+    },
+    {
       "_id": "2022-11-22",
       "title": "Fan control for your raspberry pi.",
       "resume": "How to share room with a raspberry pi cluster and keep sleeping, a.k.a Configure manual/automatic fan control for your raspberry pi.",
-      "image": "assets/blog_entries/2022-11-22/Heatsink with Fan for Raspberry Pi.png",
+      "image": "assets/blog_entries/2022-11-22/title.png",
       "date": "22 November 2022",
       "author": "Jorge Sancho Larraz",
       "tags": ["Infrastructure"]
@@ -13,7 +22,7 @@
       "_id": "2022-10-27",
       "title": "Deploying Kubernetes dashboard.",
       "resume": "Deploy kubernetes dashboard to quickly view the status of your cluster.",
-      "image": "assets/blog_entries/2022-10-27/kube-dashboard.PNG",
+      "image": "assets/blog_entries/2022-10-27/title.png",
       "date": "27 October 2022",
       "author": "Jorge Sancho Larraz",
       "tags": ["Infrastructure"]
@@ -22,10 +31,19 @@
       "_id": "2022-10-25",
       "title": "Raspberry cluster up and running.",
       "resume": "Bring you raspberry cluster up and running in just 5 minutes with kubernetes. It just works.",
-      "image": "assets/blog_entries/2022-10-25/kube-cluster.jpg",
+      "image": "assets/blog_entries/2022-10-25/title.png",
       "date": "25 October 2022",
       "author": "Jorge Sancho Larraz",
       "tags": ["Infrastructure"]
+    },
+    {
+      "_id": "2022-09-19",
+      "title": "One protocol to rule them all.",
+      "resume": "Brief introduction to the network management basics.",
+      "image": "assets/blog_entries/2022-09-19/title.png",
+      "date": "19 September 2022",
+      "author": "Jorge Sancho Larraz",
+      "tags": ["Network management"]
     }
   ]
 }
